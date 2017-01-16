@@ -21,10 +21,5 @@ import { Component } from '@angular/core';
          </div>`,
 })
 export class HeaderComponent  {
-  constructor(){
-    navigator.geolocation.getCurrentPosition((position) => {
-      localStorage.setItem('lat', position.coords.latitude.toString() )
-      localStorage.setItem('lon', position.coords.longitude.toString() )
-    })
-  }
+
 }

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 export class User {
   name: string;
-  distance:string;
-  time:string;
+  distance:number;
+  time:number;
 }
 
 @Component({
