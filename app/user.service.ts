@@ -1,50 +1,55 @@
 // import { Injectable } from '@angular/core';
 // import {User} from './app.component';
-// import { Http } from '@angular/http';
+//
+// import { Http, Headers } from '@angular/http';
+// import 'rxjs/add/operator/toPromise';
+//
 // @Injectable()
 // export class UserService {
-//   checkins: User[];
-//   getUsers(): User[] {
-//     return MyUsers;
-//   }
 //   constructor(private http: Http) {
-//     this.loadCheckins();
-//   }
-//   loadCheckins() {
-//     this.http.get('/api/users')
-//       .map(res => res.json())
-//       .subscribe(
-//         checkinData => this.checkins = checkinData
-//       );
-//   }
+//  }
 //
+//   getUsers(): Promise<User[]> {
+//    return this.http.get('http://localhost:4003/api/users')
+//        .toPromise()
+//        .then(response => response.json() as User[])
+//       .catch(this.handleError);
+//   }
+// private handleError(error: any): Promise<any> {
+//      console.error('An error occurred', error); // for demo purposes only
+//      return Promise.reject(error.message || error);
 // }
-//  const MyUsers: User[] = [
-//     { name: 'Lucy',  distance:0.4, time:2 },
-//     { name: 'Harry ',  distance:0.5, time:5 },
-//     { name: 'Jack',  distance:0.6, time:1  },
-//     { name: 'John',  distance:0.2, time:7  },
-//     { name: 'Mary',  distance:0.1, time:3 },
-//      ];
 //
-//
+//   // MyUsers: User[] = [
+//   //   { name: 'Lilit',  distance:0.4, time:2 },
+//   //   { name: 'Olga',  distance:0.1, time:3  },
+//   // ];
+// }
+
 import { Injectable } from '@angular/core';
 import {User} from './app.component';
 
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
 @Injectable()
 export class UserService {
-  getUsers(): User[] {
-    return this.MyUsers;
+  myUsers: User[] = [
+
+
+  ];
+//
+  constructor(private http: Http) {
   }
 
-  MyUsers: User[] = [
-    { name: 'Lilit',  distance:0.4, time:2 },
-    { name: 'Anush',  distance:0.5, time:5 },
-    { name: 'Suro',  distance:0.6, time:1 },
-    { name: 'Karo',  distance:0.2, time:7 },
-    { name: 'Olga',  distance:0.1, time:3  },
-    { name: 'Alis',  distance:0.7, time:2  },
-  ];
+  getUsers(): Promise<User[]> {
+    return this.http.get('http://localhost:4003/api/users')
+      .toPromise()
+      .then(response => response.json().data)
+
+  }
+
+
 }
 
 

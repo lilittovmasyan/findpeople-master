@@ -3,7 +3,12 @@ import { Component } from '@angular/core';
 export class User {
   name: string;
   distance:number;
-  time:number;
+  time: string;
+  location: {
+    type: string,
+    coordinates: Array<number>
+  };
+  date: string
 }
 
 @Component({
